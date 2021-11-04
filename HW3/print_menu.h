@@ -11,5 +11,4 @@ void print_menu(void){
     printf("(6) Show the result of a polynomial plus a polynomial\n");
     printf("(7) Show the result of a polynomial minus a polynomial\n");
     printf("(8) Show the result of a polynomial multiply a polynomial\n");
-    printf("(9) Show the result of a polynomial devided by a polynomial\nNumber: ");
 }

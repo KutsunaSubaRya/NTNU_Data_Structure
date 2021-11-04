@@ -22,6 +22,7 @@ int main(void) {
         int choose_menu_num;
         while(1){
             print_menu();
+            printf("Number: ");
             scanf("%d",&choose_menu_num);
             if(choose_menu_num<0 || choose_menu_num>9) printf(RED_BOLD), printf("Error option!\n"), printf(RESET);
             else break;
@@ -40,7 +41,9 @@ int main(void) {
                 int Poly_len=poly_parser(tmp,Poly[flag_of_Poly]);
                 length_of_poly[flag_of_Poly]=Poly_len;
                 poly_sort(Poly[flag_of_Poly],Poly_len);
+                printf(YEL_BOLD);
                 printf("This polynomial name is P%d\n",flag_of_Poly+1);
+                printf(RESET); 
                 flag_of_Poly++;
                 break;
                 //if(add_poly_name(tmp)) break;
@@ -262,7 +265,7 @@ int main(void) {
                 for(int j=0;j<length_of_poly[tmp_poly_id2];j++){
                     int tmp_ans_exp=Poly[tmp_poly_id1][i].exp+Poly[tmp_poly_id2][j].exp, tmp_same_pos;
                     int tmp_ans_coef=Poly[tmp_poly_id1][i].coef*Poly[tmp_poly_id2][j].coef;
-                    printf("tmp_ans_coef= %d\n",tmp_ans_coef);
+                    // printf("tmp_ans_coef= %d\n",tmp_ans_coef);
                     bool deter_multi_ans_exp=false;
                     for(int k=0;k<flag_of_poly_ans;k++){
                         if(tmp_ans_exp==tmp_poly_ans[k].exp){
@@ -287,32 +290,6 @@ int main(void) {
                 tmp_poly_ans[i].coef=0;
                 tmp_poly_ans[i].exp=0;
             }
-        }
-        else if(choose_menu_num==9){
-            if(flag_of_Poly<2){
-                printf(RED_BOLD);
-                printf("There are not at least two polynominal.");
-                printf(RESET);
-                continue;
-            }
-            printf(YEL_BOLD); printf("Show the result of a polynomial devided by a polynomial\nNumber: "); printf(RESET); 
-            // enter two name of poly template
-            bool deter_name1=false,deter_name2=false;
-            int tmp_poly_id1, tmp_poly_id2;
-            char tmp_poly_name1, tmp_poly_name2;
-            while(!deter_name1){
-                printf("Enter polynominal1 name: ");
-                scanf(" %c%d",&tmp_poly_name1, &tmp_poly_id1);
-                deter_name1=enter_poly_name(tmp_poly_name1,tmp_poly_id1,flag_of_Poly);
-            }
-            tmp_poly_id1--;
-            while(!deter_name2){
-                printf("Enter polynominal2 name: ");
-                scanf(" %c%d",&tmp_poly_name2, &tmp_poly_id2);
-                deter_name2=enter_poly_name(tmp_poly_name2,tmp_poly_id2,flag_of_Poly);
-            }
-            tmp_poly_id2--;
-            //
         }
     }
     return 0;
